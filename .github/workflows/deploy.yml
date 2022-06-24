@@ -20,8 +20,8 @@ jobs:
     - name: registry github user
       run: |
         git config --global user.email ream_tp@outlook.com
-        git config --global user.name ream
-        - name: deploy the app
-          run: npm run deploy
-            env:
-              GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        git config --global user.name Elias
+    - name: deploy the app
+      run: npm run deploy
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
