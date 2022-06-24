@@ -6,7 +6,9 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build -r https://$GH_TOKEN@github.com/reamdev/liarni-frontend"
   },
   "dependencies": {
     "@emotion/react": "^11.9.3",
@@ -66,5 +68,6 @@
       "last 1 safari version"
     ]
   },
-  "cracoConfig": "craco.config.js"
+  "cracoConfig": "craco.config.js",
+  "homepage": "https://reamdev.github.io/liarni-frontend"
 }
