@@ -44,7 +44,7 @@ class AuthService extends LiarniUtils.EventEmiter {
 
 	public login = (email: string, password: string) => {
 		return new Promise((resolve, reject) => {
-			axios.post('http://localhost:8000/auth/login', {
+			axios.post('https://liarni-backend.herokuapp.com/auth/login', {
 				email,
 				password
 			})
