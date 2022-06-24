@@ -10,7 +10,7 @@ const MainContent = () => {
 	const [newPostValue, setNewPostValue] = useState<string>('')
 
 	const useAPI = async () => {
-		await axios.get('http://localhost:8000/tweet', {
+		await axios.get('https://liarni-backend.herokuapp.com/tweet', {
 			headers: {
 				Authorization: `Bearer ${localStorage.getItem('token')}`
 			}
@@ -24,7 +24,7 @@ const MainContent = () => {
 	}
 
 	const useRegisterAPI = async () => {
-		await axios.post('http://localhost:8000/tweet', {
+		await axios.post('https://liarni-backend.herokuapp.com/tweet', {
 			message: newPostValue
 		}, {
 			headers: {
