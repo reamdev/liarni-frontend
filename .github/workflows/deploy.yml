@@ -16,7 +16,7 @@ jobs:
       with:
         node-version: ${{matrix.node-version}}
     - name: install packages
-      run: npm install
+      run: npm install --legacy-peer-deps
     - name: registry github user
       run: |
         git config --global user.email <email>
