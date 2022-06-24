@@ -20,8 +20,8 @@ const MainContent = () => {
 			.then(res => {
 				setState(res.data.users)
 			})
-			.catch(res => {
-				console.log('error')
+			.catch(err => {
+				console.log(`Error: ${err}`)
 			})
 	}
 
