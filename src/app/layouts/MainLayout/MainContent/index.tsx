@@ -2,7 +2,6 @@ import { Avatar, Button, TextField } from '@mui/material'
 import axios from 'axios'
 import { MCCreatePostContainer, MCPostContainer } from 'components/entities/MainLayout'
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import MCPost from './MCPost'
 
 const MainContent = () => {
@@ -19,8 +18,8 @@ const MainContent = () => {
 			.then(res => {
 				setState(res.data.tweets)
 			})
-			.catch(res => {
-				console.log('error')
+			.catch(err => {
+				console.log(`Error: ${err}`)
 			})
 	}
 
@@ -32,12 +31,12 @@ const MainContent = () => {
 				Authorization: `Bearer ${localStorage.getItem('token')}`
 			}
 		})
-			.then(res => {
+			.then(() => {
 				setReload(!reload)
 				setNewPostValue('')
 			})
-			.catch(res => {
-				console.log('error')
+			.catch(err => {
+				console.log(`Error: ${err}`)
 			})
 	}
 
