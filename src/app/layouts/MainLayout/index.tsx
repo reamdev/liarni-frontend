@@ -8,7 +8,6 @@ import { useElementSize } from 'usehooks-ts'
 import OptionMenu from './OptionMenu'
 import './a.css'
 import { useNavigate } from 'react-router-dom'
-import { setValues } from 'framer-motion/types/render/utils/setters'
 
 const MainLayout = ({ children }: MainLayoutProps) => {
 	const [optionRef, optionSize] = useElementSize()
