@@ -9,7 +9,7 @@ const MainContent = () => {
 	const { search } = useParams()
 
 	const useAPI = async () => {
-		await axios.get('http://localhost:8000/user', {
+		await axios.get('https://liarni-backend.herokuapp.com/user', {
 			headers: {
 				Authorization: `Bearer ${localStorage.getItem('token')}`
 			},
