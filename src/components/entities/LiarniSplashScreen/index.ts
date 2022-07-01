@@ -8,6 +8,7 @@ export const LiarniSplashScreenContainer = styled(motion.div)`
   width: 100%;
   height: 100vh;
   background-color: #11181d;
+  color: #e6e6e6;
 `
 
 export const LiarniSplashScreenMotionContainer = styled.div`

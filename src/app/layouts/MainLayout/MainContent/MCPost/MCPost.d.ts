@@ -1,10 +1,8 @@
 declare module 'mc-post' {
+  import { UserModel } from 'interface-models'
   export type MCPostProps = {
-    user: {
-      name: string;
-      userName: string;
-      image: string;
-    }
+    user: UserModel
     data: string;
+    date: string;
   }
 }

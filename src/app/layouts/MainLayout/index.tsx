@@ -6,7 +6,6 @@ import React, { useState } from 'react'
 import { BsSearch } from 'react-icons/bs'
 import { useElementSize } from 'usehooks-ts'
 import OptionMenu from './OptionMenu'
-import './a.css'
 import { useNavigate } from 'react-router-dom'
 
 const MainLayout = ({ children }: MainLayoutProps) => {
@@ -33,10 +32,14 @@ const MainLayout = ({ children }: MainLayoutProps) => {
 			</MainLayoutContentContainer>
 
 			<MainRigthAsideContainer ref={rigthAsideRef}>
-				<TextField placeholder='Buscar...' value={searchValue} onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => onChange(e)} />
-				<IconButton onClick={() => searchUser()}>
-					<BsSearch/>
-				</IconButton>
+				<h3>Buscar Usuarios:</h3>
+
+				<div>
+					<TextField size='small' placeholder='Buscar...' value={searchValue} onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => onChange(e)} />
+					<IconButton onClick={() => searchUser()}>
+						<BsSearch/>
+					</IconButton>
+				</div>
 			</MainRigthAsideContainer>
 		</MainLayoutContainer>
 	)

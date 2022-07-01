@@ -1,16 +1,12 @@
 import { IconButton, Modal } from '@mui/material'
 import { DefaultModalProps } from 'modals-ui-component'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { AiOutlineClose } from 'react-icons/ai'
 import { useElementSize } from 'usehooks-ts'
 import { ModalContainer } from './ModalComponents'
 
 export const DefaultModal = ({ widthModal, heightModal, isOpen, setIsOpen, children }: DefaultModalProps) => {
-	const [modalContentRef, { width, height }] = useElementSize()
-
-	useEffect(() => {
-		console.log(width, height)
-	})
+	const [modalContentRef, { height }] = useElementSize()
 
 	const cloneElement = () => {
 		if (React.isValidElement(children)) {
@@ -18,7 +14,6 @@ export const DefaultModal = ({ widthModal, heightModal, isOpen, setIsOpen, child
 				height: height
 			})
 		}
-
 		return children
 	}
 
@@ -32,7 +27,6 @@ export const DefaultModal = ({ widthModal, heightModal, isOpen, setIsOpen, child
 					<IconButton id='default-modal-close-btn' onClick={() => setIsOpen(false)}>
 						<AiOutlineClose/>
 					</IconButton>
-					{/* {children} */}
 					{ cloneElement() }
 				</ModalContainer>
 			</div>

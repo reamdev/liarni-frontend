@@ -19,6 +19,7 @@ export const ModalContainer = styled.div<ModalContainerProps>`
     > svg {
       width: 20px;
       height: 20px;
+      fill: #e6e8e9;
     }
 
     &:hover {

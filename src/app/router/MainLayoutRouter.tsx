@@ -4,6 +4,7 @@ import ExploreContent from '@app/layouts/MainLayout/ExploreContent'
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import PrivateRoute from './PrivateRoute'
+import ProfileContent from '@app/layouts/MainLayout/ProfileContent'
 
 const MainLayoutRouter = () => {
 	return (
@@ -22,6 +23,16 @@ const MainLayoutRouter = () => {
 				<Route path='/explore/:search' element={
 					<PrivateRoute>
 						<ExploreContent/>
+					</PrivateRoute>
+				} />
+				<Route path='/profile' element={
+					<PrivateRoute>
+						<ProfileContent/>
+					</PrivateRoute>
+				} />
+				<Route path='/user/:user' element={
+					<PrivateRoute>
+						<ProfileContent/>
 					</PrivateRoute>
 				} />
 			</Routes>

@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { LoginFormContainer } from 'components/entities/Login'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { LoginFormProps, LoginInputs } from 'liarni-login-form'
-import { Button, FormControl, FormHelperText, InputLabel, OutlinedInput } from '@mui/material'
-import { emailRegex } from 'utils'
+import { Button, CircularProgress, FormControl, FormHelperText, InputLabel, OutlinedInput } from '@mui/material'
+import { ConstVariables, emailRegex } from 'utils'
 import { FormsTitleContainer, LoginInputContainer } from 'components/entities/Login/RightComponent'
 import axios from 'axios'
 import { useSnackbar } from 'notistack'
@@ -13,18 +13,21 @@ const LoginForm = (props: LoginFormProps) => {
 	const { register, handleSubmit, formState: { errors } } = useForm<LoginInputs>()
 	const { enqueueSnackbar } = useSnackbar()
 	const navigate = useNavigate()
-
+	const [load, setLoad] = useState<boolean>(false)
 
 	const onSubmit: SubmitHandler<LoginInputs> = data => {
 		const useAPI = async () => {
-			await axios.post('http://localhost:8000/auth/login', { email: data.email, password: data.password })
+			setLoad(true)
+			await axios.post(`${ConstVariables.API_URL}/auth/login`, { email: data.email, password: data.password })
 				.then(res => {
 					localStorage.setItem('token', res.data.token)
-					enqueueSnackbar(res.data.menssage)
+					enqueueSnackbar(res.data.message, { variant: 'success' })
 					navigate('/')
+					setLoad(false)
 				})
 				.catch(res => {
-					enqueueSnackbar(res.data.menssage)
+					enqueueSnackbar(res.response.data.message, { variant: 'error' })
+					setLoad(false)
 				})
 		}
 
@@ -66,7 +69,9 @@ const LoginForm = (props: LoginFormProps) => {
 					</FormControl>
 				</LoginInputContainer>
 
-				<Button type='submit' variant='outlined'>Iniciar Sesión</Button>
+				<Button type='submit' variant='outlined'>
+					{load ? <CircularProgress /> : 'Iniciar Sesión'}
+				</Button>
 			</LoginFormContainer>
 		</div>
 	)

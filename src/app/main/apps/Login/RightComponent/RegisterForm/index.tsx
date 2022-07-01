@@ -1,15 +1,36 @@
-import { Button, FormControl, FormHelperText, InputLabel, OutlinedInput } from '@mui/material'
+import { Button, CircularProgress, FormControl, FormHelperText, InputLabel, OutlinedInput } from '@mui/material'
+import axios from 'axios'
 import { FormsTitleContainer, RegisterDataContainer, RegisterFormContainer, RegisterInputsContainer } from 'components/entities/Login/RightComponent'
 import { RegisterInputs } from 'liarni-register-form'
-import React from 'react'
+import { useSnackbar } from 'notistack'
+import React, { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { emailRegex } from 'utils'
+import { useNavigate } from 'react-router-dom'
+import { ConstVariables, emailRegex } from 'utils'
 
 const RegisterForm = () => {
 	const { register, watch, handleSubmit, formState: { errors } } = useForm<RegisterInputs>()
+	const { enqueueSnackbar } = useSnackbar()
+	const navigate = useNavigate()
+	const [load, setLoad] = useState<boolean>(false)
 
 	const onSubmit: SubmitHandler<RegisterInputs> = data => {
-		console.log(data)
+		const useAPI = async () => {
+			setLoad(true)
+			await axios.post(`${ConstVariables.API_URL}/auth/register`, { userName: data.userName, name: data.name, lastName: data.lastName, email: data.email, password: data.password })
+				.then(res => {
+					localStorage.setItem('token', res.data.token)
+					enqueueSnackbar(res.data.message, { variant: 'success' })
+					setLoad(false)
+					navigate('/')
+				})
+				.catch(res => {
+					enqueueSnackbar(res.response.data.message, { variant: 'error' })
+					setLoad(false)
+				})
+		}
+
+		useAPI()
 	}
 
 	return (
@@ -106,7 +127,8 @@ const RegisterForm = () => {
 					</FormControl>
 				</RegisterInputsContainer>
 
-				<Button type='submit' variant='outlined'>Registrarse</Button>
+				<Button type='submit' variant='outlined'>
+					{load ? <CircularProgress/> : 'Registrarse'}</Button>
 			</RegisterDataContainer>
 		</RegisterFormContainer>
 	)

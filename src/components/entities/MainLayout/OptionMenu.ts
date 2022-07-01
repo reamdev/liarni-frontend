@@ -18,6 +18,7 @@ export const OptionLogoContainer = styled.div`
     svg {
       width: 50px;
       height: 50px;
+      fill: #e6e8e9;
     }
   }
 
@@ -80,28 +81,18 @@ export const OptionUserOptionsContainer = styled.div`
   display: none;
   position: absolute;
   width: 250px;
-  top: calc(80.5%);
+  height: 50px;
+  top: calc(82%);
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.5 ease;
 
-  ul {
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  button {
     width: 100%;
     height: 100%;
-    list-style: none;
-
-    li {
-      width: 100%;
-      height: 100%;
-
-      &:hover {
-        background-color: rgba(255, 255, 255, 0.1);
-      }
-
-      a {
-        text-decoration: none;
-        color: red;
-      }
-    }
   }
 `
 
@@ -168,4 +159,43 @@ export const OptionMenuContainer = styled.div`
   padding: 10px 15px;
   overflow: hidden;
   overflow-y: scroll;
+`
+
+export const NewPostOptionContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20px;
+
+  > h3 {
+    color: #e6e8e9;
+  }
+
+  > div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    > div {
+      &:nth-of-type(2) {
+        width: 88%;
+
+        > div {
+          textarea {
+            color: #e6e8e9;
+          }
+
+          &::before {
+            border-color: rgba(230, 232, 233, 0.23);
+          }
+        }
+      }
+    }
+  }
+
+  button {
+    width: 100%;
+    margin: 20px 0;
+    align-self: flex-end;
+  }
 `

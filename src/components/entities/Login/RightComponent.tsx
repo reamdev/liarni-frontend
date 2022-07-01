@@ -65,6 +65,16 @@ export const LoginInputContainer = styled.div`
       padding: 0 2px;
     }
 
+    > div {
+      > input {
+        color: #e6e8e9;
+      }
+
+      fieldset {
+        border-color: rgba(230, 232, 233, 0.23);
+      }
+    }
+
     &:last-of-type {
       margin-bottom: 0;
     }
@@ -98,6 +108,7 @@ export const LoginSloganContainer = styled.div`
     width: 100px;
     height: 100px;
     margin-left: -16px;
+    color: #e6e8e9;
   }
 
   h2 {
@@ -114,6 +125,7 @@ export const LoginSloganContainer = styled.div`
 export const FormsTitleContainer = styled.div`
   width: 100%;
   text-align: center;
+  color: #e6e8e9;
 
   > h2 {
     font-size: 1.75rem;
@@ -132,6 +144,16 @@ export const RegisterInputsContainer = styled.div`
 
     > label {
       color: #e6e8e9;
+    }
+
+    > div {
+      > input {
+        color: #e6e8e9;
+      }
+
+      > fieldset {
+        border-color: rgba(230, 232, 233, 0.23);
+      }
     }
   }
 

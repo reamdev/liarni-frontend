@@ -7,7 +7,7 @@ import theme from '../themes'
 import { Provider as ReduxProvider } from 'react-redux'
 import { store } from './store'
 import { CssBaseline } from '@mui/material'
-import './App.css'
+// import './App.css'
 
 function App() {
 	return (

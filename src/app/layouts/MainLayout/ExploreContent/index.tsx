@@ -1,15 +1,17 @@
 import axios from 'axios'
 import { MCPostContainer } from 'components/entities/MainLayout'
+import { UserModel } from 'interface-models'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import MCPost from './ECUser'
+import { ConstVariables } from 'utils'
+import ECPost from './ECUser'
 
 const MainContent = () => {
-	const [state, setState] = useState<{name: string, userName: string, email: string, _id: string}[]>([])
+	const [state, setState] = useState<UserModel[]>([])
 	const { search } = useParams()
 
 	const useAPI = async () => {
-		await axios.get('https://liarni-backend.herokuapp.com/user', {
+		await axios.get(`${ConstVariables.API_URL}/user`, {
 			headers: {
 				Authorization: `Bearer ${localStorage.getItem('token')}`
 			},
@@ -18,6 +20,7 @@ const MainContent = () => {
 			}
 		})
 			.then(res => {
+				console.log(res.data)
 				setState(res.data.users)
 			})
 			.catch(err => {
@@ -36,16 +39,16 @@ const MainContent = () => {
 	return (
 		<div>
 			<div>
-				<h4>Explorar</h4>
+				<h4 style={{ padding: '0 20px' }}>Explorar</h4>
 
-				<p>{search ? `Buscando: ${search}`: ''}</p>
+				<p style={{ padding: '0 20px' }}>{search ? `Buscando: ${search}`: ''}</p>
 
 				<MCPostContainer>
 					{
 						state.length > 0 ? state.map((elem, i) => (
-							<MCPost key={i} user={{name: elem.name, userName: elem.userName, image: `https://i.pravatar.cc/${(i + 1) * 100}`}} data={elem.email}/>
+							<ECPost key={i} user={elem} />
 						)) :
-							<h3>Sin Posts</h3>
+							<h3 style={{ padding: '0 20px' }}>Sin Usuarios</h3>
 					}
 				</MCPostContainer>
 			</div>

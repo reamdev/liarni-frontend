@@ -2,6 +2,7 @@ import LiarniUtils from '@liarni/utils/LiarniUtils'
 import axios from 'axios'
 import jwtDecode from 'jwt-decode'
 import { Token } from 'services'
+import { ConstVariables } from 'utils'
 
 class AuthService extends LiarniUtils.EventEmiter {
 	init() {
@@ -44,7 +45,7 @@ class AuthService extends LiarniUtils.EventEmiter {
 
 	public login = (email: string, password: string) => {
 		return new Promise((resolve, reject) => {
-			axios.post('https://liarni-backend.herokuapp.com/auth/login', {
+			axios.post(`${ConstVariables.API_URL}/auth/login`, {
 				email,
 				password
 			})
@@ -52,6 +53,7 @@ class AuthService extends LiarniUtils.EventEmiter {
 					if (response.data) {
 						resolve(response.data)
 					} else {
+						localStorage.getItem('token') && localStorage.removeItem('token')
 						reject(response.data)
 					}
 				})
