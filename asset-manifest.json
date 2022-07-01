@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/liarni-frontend/static/js/main.d55dc649.js",
+    "index.html": "/liarni-frontend/index.html",
+    "main.d55dc649.js.map": "/liarni-frontend/static/js/main.d55dc649.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.d55dc649.js"
+  ]
+}
