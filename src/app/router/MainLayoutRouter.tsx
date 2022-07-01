@@ -2,7 +2,7 @@ import { MainLayout } from '@app/layouts'
 import MainContent from '@app/layouts/MainLayout/MainContent'
 import ExploreContent from '@app/layouts/MainLayout/ExploreContent'
 import React from 'react'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, Navigate } from 'react-router-dom'
 import PrivateRoute from './PrivateRoute'
 import ProfileContent from '@app/layouts/MainLayout/ProfileContent'
 
@@ -34,6 +34,9 @@ const MainLayoutRouter = () => {
 					<PrivateRoute>
 						<ProfileContent/>
 					</PrivateRoute>
+				} />
+				<Route path='/liarni-frontend' element={
+					<Navigate to="/" replace />
 				} />
 			</Routes>
 		</MainLayout>
